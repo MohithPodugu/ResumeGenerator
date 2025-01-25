@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* A4 Paper Styling */
+        .resume {
+            background: #ffffff;
+            width: 210mm; /* A4 width */
+            min-height: 297mm; /* A4 height */
+            padding: 20mm;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            color: #333;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        ul li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        /* Header Section */
+        .resume p strong {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        /* Section Spacing */
+        .resume > h2 {
+            margin-top: 30px;
+        }
+
+        /* Back Button Styling */
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button {
+            background: #4facfe;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #00f2fe;
+            box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Print Styling */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+
+            .resume {
+                box-shadow: none;
+                margin: 0;
+                page-break-after: always;
+            }
+
+            .back-button-container {
+                display: none; /* Hide back button when printing */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <h1>{{ details.name }}</h1>
+        <p><strong>Email:</strong> {{ details.email }}</p>
+        <h2>Profile</h2>
+        <p>{{ details.profile }}</p>
+        <h2>Education</h2>
+        <p>{{ details.education }}</p>
+        <h2>Experience</h2>
+        <p>{{ details.experience }}</p>
+        <h2>Skills</h2>
+        <ul>
+            {% for skill in details.skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Projects</h2>
+        <p>{{ details.projects }}</p>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <button onclick="window.history.back()" class="back-button">← Back</button>
+    </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Any JavaScript needed for interactivity can be added here.
+});
+</script>
+</html>
